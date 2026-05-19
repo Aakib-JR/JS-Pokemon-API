@@ -7,6 +7,10 @@ async function fetchData() {
 
         const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
 
+        if (!pokemonName) {
+            throw new Error("Please Enter a Pokemon Name !")
+        }
+
         let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
 
         if (!response.ok) {
@@ -28,7 +32,7 @@ async function fetchData() {
     }
     catch (error) {
         console.log(error)
-        err.innerText = error
+        err.innerText = error.message;
 
         imgElement.style.display = "none";
     }

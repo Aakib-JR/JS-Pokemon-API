@@ -23,6 +23,8 @@ async function fetchData() {
 
         err.innerText = ""
 
+        // SET LOCAL STORAGE 
+        localStorage.setItem("pokemonImage", pokemonImage);
     }
     catch (error) {
         console.log(error)
@@ -33,5 +35,10 @@ async function fetchData() {
 
 }
 
+// GET LOCAL STORAGE
+const savedImage = localStorage.getItem("pokemonImage");
 
-
+if (savedImage) {
+    imgElement.src = savedImage;
+    imgElement.style.display = "block";
+}
